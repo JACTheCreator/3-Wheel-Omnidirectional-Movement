@@ -1,6 +1,6 @@
 import math
 
-def moveCartesian(x, y, vel = 100):
+def moveCartesian(x, y, vel = 100, R):
 	print("Cartesian")
 	if x == 0 and y == 0:
 		return
@@ -16,9 +16,9 @@ def moveCartesian(x, y, vel = 100):
 	thetaB = math.radians(120-theta)
 	thetaC = math.radians(0-theta)
 
-	FL = vel * math.cos(thetaA)
-	FR = vel * math.cos(thetaB)
-	BW = vel * math.cos(thetaC)
+	FL = vel * math.cos(thetaA) + R
+	FR = vel * math.cos(thetaB) + R
+	BW = vel * math.cos(thetaC) + R 
 
 	print("thetaA: " + str(thetaA))
 	print("thetaB: " + str(thetaB))
@@ -32,18 +32,16 @@ def moveCartesian(x, y, vel = 100):
 
 	print ("")
 
+def convertPolarToCartesian(angle, r = 1):
+	inangle = math.radian(angle)
+	return (r * math.cos(inangle), r * math.sin(inangle))
+
 def moveAngle(angle, vel = 100):
 	x, y = convertPolarToCartesian(angle)
 	print(x , y)
 
 	# moveCartesian(x, y, vel)
 
-def convertPolarToCartesian(angle, r = 1):
-	angle = math.degrees(angle)
-	return (r * math.cos(angle), r * math.sin(angle))
 
-# x, y = 0, 1
-# moveCartesian(x, y)
 
-angle = 22.6
-moveAngle(angle, 13)
+
